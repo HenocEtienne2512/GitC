@@ -8,13 +8,23 @@ namespace AlocarCarro {
     class Program {
         static string[,] baseDosCarros;
         static void Main(string[] args) {
+
             MostrarBemVindos();
 
-            //MenuPricipal();
-            if (MenuPricipal() == 1) {
-                MostrarMenuAlacacao();
+            CarregaBaseCarros();
+
+            var opcaoMenu = MenuPrincipal();
+
+            while (opcaoMenu != 3) {
+                if (opcaoMenu == 1)
+                    AlocarUmCarro();
+
+                if (opcaoMenu == 2)
+                    DesalocarUmCarro();
+
+                opcaoMenu = MenuPrincipal();
             }
-            
+
             Console.ReadKey();
         }
         public static void MostrarBemVindos() {
@@ -25,11 +35,12 @@ namespace AlocarCarro {
             Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
         }
 
-        public static int MenuPricipal() {
+        public static int MenuPrincipal() {
             Console.WriteLine("\r\nMENU - PRICIPAL");
-            Console.WriteLine("QualO que você deseja realizar:");
+            Console.WriteLine("O que você deseja realizar:");
             Console.WriteLine("1 - Alocar um Carro");
-            Console.WriteLine("2 - Sair do sistema");
+            Console.WriteLine("2 - Devolver o carro.");
+            Console.WriteLine("3 - Sair do sistema");
             Console.WriteLine("Escolher a opção desejada");
             int.TryParse(Console.ReadKey().KeyChar.ToString(), out int opcao);
             return opcao;
@@ -52,46 +63,85 @@ namespace AlocarCarro {
             }
             return false;
         }
-        public static void AlocarCarro(string nomeLivro) {
+        public static void AlocarCarro(string nomeCarro, bool alocar) {
             for (int i = 0; i < baseDosCarros.GetLength(0); i++) {
-                if (nomeLivro == baseDosCarros[i, 1]) {
-                    baseDosCarros[i, 1] = "Não";
+                if (nomeCarro == baseDosCarros[i, 0]) {
+                    baseDosCarros[i, 1] = alocar ? "não" : "sim"; 
                 }
             }
-        }
-
-        public static void MostrarMenuAlacacao() {
             Console.Clear();
             MostrarBemVindos();
+            Console.WriteLine("Carro atualizado com sucesso!");
+        }
 
-            Console.WriteLine("MENU - ALOCAÇÃO DE CARROS");
-            Console.WriteLine("Digite o tipo de carro a ser alocado:");
+        public static void AlocarUmCarro() {
+            MostrarMenuInicialCarros("Alocar um Carro:");
+            Console.WriteLine("Digite o tipo de carro para alocar:");
+
             var nomedoCarro = Console.ReadLine();
 
             Console.WriteLine("Informe o ano correspondente ao carro:");
             String ano = Console.ReadLine();
 
+
             int.TryParse(ano, out int resultado);
             if (PesquisarCarroParaAlocacao(nomedoCarro, resultado)) {
-
                 Console.Clear();
+                MostrarBemVindos();
+                Console.WriteLine("Você deseja alugar o carro? para sim(1) para não(0)");
 
-                Console.WriteLine("Você já fez sua escolha? para sim(1) para não(0)");
+                AlocarCarro(nomedoCarro, Console.ReadKey().KeyChar.ToString() == "1");
 
-                if (Console.ReadKey().KeyChar.ToString() == "1") {
-                    AlocarCarro(nomedoCarro);
-                    Console.Clear();
-                    Console.WriteLine("Carro alocado com sucesso!!!");
-                } else {
-                    Console.Clear();
-                }
-                Console.WriteLine("Listagem de Carro:");
+                MostrarListaDeCarros();
 
-                for (int i = 0; i < baseDosCarros.GetLength(0); i++) {
-                    Console.WriteLine($"Nome: {baseDosCarros[i, 0]} Disponivel:{baseDosCarros[i, 2]}");
-
-                }
+                Console.ReadKey();
             }
         }
+       
+        public static void MostrarListaDeCarros() {
+            Console.WriteLine("Listagem de Carros:");
+
+            for (int i = 0; i < baseDosCarros.GetLength(0); i++) {
+                Console.WriteLine($"Nome: {baseDosCarros[i, 0]} Disponivel:{baseDosCarros[i, 2]}");
+            }
+        }
+
+        public static void DesalocarUmCarro() {
+            MostrarMenuInicialCarros("Desalocar um Carro:");
+            Console.WriteLine("Digite o tipo de carro para desalocar:");
+            var nomedoCarro = Console.ReadLine();
+
+            Console.WriteLine("Informe o ano correspondente ao carro:");
+            String ano = Console.ReadLine();
+
+            MostrarListaDeCarros();
+
+           // var nomedoCarro = Console.ReadLine();
+           // String ano = Console.ReadLine();
+
+            int.TryParse(ano, out int resultado);
+            if (!PesquisarCarroParaAlocacao(nomedoCarro, resultado)) {
+                Console.Clear();
+                MostrarBemVindos();
+                Console.WriteLine("Você deseja desalocar o Carro? para sim(1) para não(0)");
+
+                AlocarCarro(nomedoCarro, Console.ReadKey().KeyChar.ToString() == "0");
+
+                MostrarListaDeCarros();
+
+                Console.ReadKey();
+            }
+        }
+
+        public static void MostrarMenuInicialCarros(string operacao) 
+        {
+            Console.Clear();
+
+            MostrarBemVindos();
+
+            Console.WriteLine($"MENU - ALOCAÇÃO DE CARROS - operação: {operacao}");
+
+        }
+
     }
 }
