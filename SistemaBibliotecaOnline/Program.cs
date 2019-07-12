@@ -70,7 +70,7 @@ namespace SistemaBibliotecaOnlineNasa3PONTOZERO {
         /// </summary>
         /// <param name="nomeLivro">Nome do livro a ser pesquisado</param>
         /// <returns>Retorna verdadeiro em caso o livro estiver livre para alocação.</returns>
-        public static bool? PesquisaLivroParaAlocacao(string nomeLivro) {
+        public static bool? PesquisaLivroParaAlocacao(ref string nomeLivro) {
             for (int i = 0; i < baseDeLivros.GetLength(0); i++) {
                 if (CompararNomes(nomeLivro, baseDeLivros[i, 0])) {
                     Console.WriteLine($"O livro:{nomeLivro}" +
@@ -89,7 +89,7 @@ namespace SistemaBibliotecaOnlineNasa3PONTOZERO {
                 Console.WriteLine("Digite o nome do livro a ser pesquisado:");
                 nomeLivro = Console.ReadLine();
 
-                return PesquisaLivroParaAlocacao(nomeLivro);
+                return PesquisaLivroParaAlocacao(ref nomeLivro);
             }
 
             return null;
@@ -117,7 +117,7 @@ namespace SistemaBibliotecaOnlineNasa3PONTOZERO {
             MostrarMenuInicialLivros("Alocar um livro:");
 
             var nomedolivro = Console.ReadLine();
-            var resultadoPesquisa = PesquisaLivroParaAlocacao(nomedolivro);
+            var resultadoPesquisa = PesquisaLivroParaAlocacao(ref nomedolivro);
 
             if (resultadoPesquisa != null && resultadoPesquisa == true) {
                 Console.Clear();
@@ -151,7 +151,8 @@ namespace SistemaBibliotecaOnlineNasa3PONTOZERO {
             MostrarListaDeLivros();
 
             var nomedolivro = Console.ReadLine();
-            var resultadoPesquisa = PesquisaLivroParaAlocacao(nomedolivro);
+            var resultadoPesquisa = PesquisaLivroParaAlocacao(ref 0
+                nomedolivro);
 
             if (resultadoPesquisa != null && resultadoPesquisa == false) {
                 Console.Clear();
