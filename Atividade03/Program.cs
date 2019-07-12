@@ -21,11 +21,11 @@ namespace Atividade03 {
         public static void CarregaNomes() {
             ListaDeNomes = new string[20, 3] {
                 { "Henoc", "37", "M" },
-                { "Alex", "29", "M" },
+                { "Alex H", "29", "M" },
                 { "Falande", "30", "F" },
                 { "Leandro", "19", "M" },
-                { "João", "25", "M" },
-                { "Jean", "20", "M" },
+                { "João A", "25", "M" },
+                { "Jean A", "20", "M" },
                 { "Moises", "14", "M" },
                 { "Woodly", "17", "M" },
                 { "Marie", "35", "F" },
@@ -33,7 +33,7 @@ namespace Atividade03 {
                 { "Lucas", "31", "M" },
                 { "Patrice", "70", "M" },
                 { "Stephania", "30", "M" },
-                { "Etienne", "", "F" },
+                { "Etienne", "28", "F" },
                 { "Loiseau", "16", "F" },
                 { "Pierre", "18", "M" },
                 { "Luis", "28", "M" },
@@ -42,7 +42,7 @@ namespace Atividade03 {
                 { "Webster", "34", "M" }
             };
             for (int i = 0; i < ListaDeNomes.GetLength(0); i++) {
-                Console.WriteLine($"{i+1}º nome : {ListaDeNomes[i,0]}       idade: {ListaDeNomes[i,1]}        sexo: {ListaDeNomes[i,2]}");
+                Console.WriteLine($"{i+1}º nome : {ListaDeNomes[i,0]} \tidade: {ListaDeNomes[i,1]} \tsexo: {ListaDeNomes[i,2]}");
             }
             Console.ReadKey();
         }
