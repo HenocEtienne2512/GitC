@@ -15,12 +15,16 @@ namespace AlocarCarro {
 
             var opcaoMenu = MenuPrincipal();
 
-            while (opcaoMenu != 3) {
+            while (opcaoMenu != 4) {
                 if (opcaoMenu == 1)
                     AlocarUmCarro();
 
                 if (opcaoMenu == 2)
                     DesalocarUmCarro();
+
+                if (opcaoMenu == 3)
+                    MostrarListaDeCarros();
+                    Console.ReadLine();
 
                 opcaoMenu = MenuPrincipal();
             }
@@ -40,7 +44,8 @@ namespace AlocarCarro {
             Console.WriteLine("O que você deseja realizar:");
             Console.WriteLine("1 - Alocar um Carro");
             Console.WriteLine("2 - Devolver o carro.");
-            Console.WriteLine("3 - Sair do sistema");
+            Console.WriteLine("3 - Verificar disponiblidade do carro.");
+            Console.WriteLine("4 - Sair do sistema");
             Console.WriteLine("Escolher a opção desejada");
             int.TryParse(Console.ReadKey().KeyChar.ToString(), out int opcao);
             return opcao;
@@ -53,20 +58,33 @@ namespace AlocarCarro {
             };
         }
 
-        public static bool PesquisarCarroParaAlocacao(string nomeCarro, int ano) {
+        public static bool? PesquisarCarroParaAlocacao(ref string nomeCarro, int ano) {
             for (int i = 0; i < baseDosCarros.GetLength(0); i++) {
-                if (nomeCarro == baseDosCarros[i, 0] && ano.ToString() == baseDosCarros[i,1]) {
+                if (CompararNomes(nomeCarro, baseDosCarros[i, 0]) && ano.ToString() == baseDosCarros[i,1]) {
                     Console.WriteLine($"carro: {nomeCarro}"+ $"ano: {ano}" + $" pode ser alocado?:{baseDosCarros[i, 2]}");
 
                     return baseDosCarros[i, 2] == "Sim";
                 }
             }
-            return false;
+            Console.WriteLine("Nenhum carro encontrado. Deseja realizar a busca novamente ?");
+            Console.WriteLine("Digite o número da opção desejada: sim(1) não(0)");
+
+            int.TryParse(Console.ReadKey().KeyChar.ToString(), out int opcao);
+
+            if (opcao == 1) {
+                Console.WriteLine("Digite o tipo de carro a ser pesquisado:");
+                nomeCarro = Console.ReadLine();
+
+                return PesquisarCarroParaAlocacao(ref nomeCarro, ano);
+            }
+
+            return null;
         }
+    
         public static void AlocarCarro(string nomeCarro, bool alocar) {
             for (int i = 0; i < baseDosCarros.GetLength(0); i++) {
-                if (nomeCarro == baseDosCarros[i, 0]) {
-                    baseDosCarros[i, 1] = alocar ? "não" : "sim"; 
+                if (CompararNomes(nomeCarro,  baseDosCarros[i, 0])) {
+                    baseDosCarros[i, 2] = alocar ? "não" : "sim"; 
                 }
             }
             Console.Clear();
@@ -85,7 +103,9 @@ namespace AlocarCarro {
 
 
             int.TryParse(ano, out int resultado);
-            if (PesquisarCarroParaAlocacao(nomedoCarro, resultado)) {
+            var resultadoPesquisa = PesquisarCarroParaAlocacao(ref nomedoCarro, resultado);
+
+            if (resultadoPesquisa != null && resultadoPesquisa == true) {
                 Console.Clear();
                 MostrarBemVindos();
                 Console.WriteLine("Você deseja alugar o carro? para sim(1) para não(0)");
@@ -96,13 +116,16 @@ namespace AlocarCarro {
 
                 Console.ReadKey();
             }
+            if (resultadoPesquisa == null) {
+                Console.WriteLine("Nenhum carro deste tipo foi encontrado em nossa base de dados do sistema.");
+            }
         }
        
         public static void MostrarListaDeCarros() {
-            Console.WriteLine("Listagem de Carros:");
+            Console.WriteLine("\r\nListagem de Carros:");
 
             for (int i = 0; i < baseDosCarros.GetLength(0); i++) {
-                Console.WriteLine($"Nome: {baseDosCarros[i, 0]} Disponivel:{baseDosCarros[i, 2]}");
+                Console.WriteLine($"Nome: {baseDosCarros[i, 0]} ano: {baseDosCarros[i, 1]} Disponivel:{baseDosCarros[i, 2]}");
             }
         }
 
@@ -116,11 +139,11 @@ namespace AlocarCarro {
 
             MostrarListaDeCarros();
 
-           // var nomedoCarro = Console.ReadLine();
-           // String ano = Console.ReadLine();
-
             int.TryParse(ano, out int resultado);
-            if (!PesquisarCarroParaAlocacao(nomedoCarro, resultado)) {
+
+            var resultadoPesquisa = PesquisarCarroParaAlocacao(ref nomedoCarro, resultado);
+
+            if (resultadoPesquisa != null && resultadoPesquisa == false) {
                 Console.Clear();
                 MostrarBemVindos();
                 Console.WriteLine("Você deseja desalocar o Carro? para sim(1) para não(0)");
@@ -130,6 +153,9 @@ namespace AlocarCarro {
                 MostrarListaDeCarros();
 
                 Console.ReadKey();
+            }
+            if (resultadoPesquisa == null) {
+                Console.WriteLine("Nenhum carro deste tipo foi encontrado em nossa base de dados do sistema.");
             }
         }
 
@@ -143,5 +169,15 @@ namespace AlocarCarro {
 
         }
 
+        public static bool CompararNomes(string informacaoParaComparar, string informacaoASerComparada) {
+            if (informacaoParaComparar.ToLower().Replace(" ", "")
+                    == informacaoASerComparada.ToLower().Replace(" ", ""))
+                return true;
+
+            return false;
+        }
+
     }
+
 }
+
