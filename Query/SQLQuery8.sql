@@ -1,0 +1,1 @@
+﻿select * from Escola2019;
