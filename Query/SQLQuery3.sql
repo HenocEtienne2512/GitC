@@ -1,0 +1,3 @@
+﻿DROP TABLE Carro;
+GO
+DROP TABLE AulaHoje;
