@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E9B7D23D-604E-4780-9AED-A2BF7823E5BA}</ProjectGuid>
+    <ProjectGuid>{6652563E-2012-4AD6-9A65-454CF797337A}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ListaBiManeiraSimples</RootNamespace>
-    <AssemblyName>ListaBiManeiraSimples</AssemblyName>
+    <RootNamespace>GestorEscola</RootNamespace>
+    <AssemblyName>GestorEscola</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,14 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Carrega\CarregaLista.cs" />
-    <Compile Include="Mostrar\MostrarLista.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ProgBoletimEscolar\ProgBoletimEscolar.csproj">
+      <Project>{ba0294ef-c4d9-45d2-ac80-8f41a0630dd0}</Project>
+      <Name>ProgBoletimEscolar</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
