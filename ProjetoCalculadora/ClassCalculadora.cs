@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-namespace Calculadora {
-    public class Calcuradora {
+namespace ProjetoCalculadora
+{
+    public class ClassCalculadora
+    {
         public int Somar(int valor1, int valor2) {
             return valor1 + valor2;
         }
@@ -31,7 +32,7 @@ namespace Calculadora {
         }
 
         public double CalcRaioCirculo(double area) {
-            var raio = Math.Sqrt(area/3.14);
+            var raio = Math.Sqrt(area / 3.14);
             return raio;
         }
 
