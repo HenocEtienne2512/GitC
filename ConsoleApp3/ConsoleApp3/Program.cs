@@ -16,11 +16,11 @@ namespace MinhaPrimeiraListaTipada {
                     Nome = Console.ReadLine(),
                     Quantidade = int.Parse(Console.ReadLine()),
                     Valor = double.Parse(Console.ReadLine())
-                });
+                }) ;
             }
            
             foreach (Lanche item in minhaLista) {
-                Console.WriteLine($"Lanches disponiveis: {item.Nome}");
+                Console.WriteLine($"Nome: {item.Nome} quantidade: {item.Quantidade} valor : {item.Valor}");
             }
             Console.WriteLine("Removendo item...");
             foreach (Lanche item in minhaLista) {
@@ -29,16 +29,12 @@ namespace MinhaPrimeiraListaTipada {
                     break;
                 }
             }
-            /*
-            minhaLista.Remove(minhaLista.FirstOrDefault(x => x.Quantidade == 2));
-            var meniItem = (from item in minhaLista
-                            where item.Quantidade == 3
-                            select item).ToList<Lanche>();
-            */
-            foreach (Lanche item in minhaLista) {
-                Console.WriteLine($"Lanches disponiveis: {item.Nome}");
-            }
             Console.ReadKey();
+        }
+        public static string RetornaValores(string nome) {
+            Console.WriteLine($"Informe o valor para o campo: {nome}");
+
+            return 
         }
     }
 }
