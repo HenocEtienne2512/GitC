@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataGridViewExample.Edicao;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,10 +13,6 @@ namespace DataGridViewExample {
     public partial class Form3 : Form {
         public Form3() {
             InitializeComponent();
-        }
-
-        private void Adicionar_Click(object sender, EventArgs e) {
-
         }
 
         private void Form3_Load(object sender, EventArgs e) {
@@ -34,6 +31,13 @@ namespace DataGridViewExample {
                         this.usuariosTableAdapter.DeleteQuery(usuarioSelect.Id);
                     }
                     break;
+                case 1: {
+                        frmEdicaoUsuario editUsuario = new frmEdicaoUsuario();
+                        editUsuario.UsuariosRow = usuarioSelect;
+                        editUsuario.ShowDialog();
+
+                   this.usuariosTableAdapter.Update(editUsuario.UsuariosRow);
+                    } break;
             }
 
             this.usuariosTableAdapter.CustomQuery(this.querysInnerDataSet1.Usuarios);

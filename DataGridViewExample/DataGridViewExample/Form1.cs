@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataGridViewExample.Adicao;
+using DataGridViewExample.Edicao;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,8 +20,6 @@ namespace DataGridViewExample {
             // TODO: This line of code loads data into the 'querysInnerDataSet1.Carros' table. You can move, or remove it, as needed.
             this.carrosTableAdapter.CustomQuery(this.querysInnerDataSet1.Carros);
             // TODO: This line of code loads data into the 'querysInnerDataSet.Carros' table. You can move, or remove it, as needed.
-
-
 
         }
 
@@ -48,10 +48,27 @@ namespace DataGridViewExample {
                 as DataGridViewExample.QuerysInnerDataSet1.CarrosRow;
             
             switch (e.ColumnIndex) {
-                case 0: {
+                
+                case 0: { /*TODO: Deletar*/
                         this.carrosTableAdapter.DeleteQuery(carSelect.Id);
                     }
                     break;
+                case 1: {/*TODO: Editar*/
+                        frmEdicaoCarros editCarro = new frmEdicaoCarros();
+                        editCarro.CarrosRow = carSelect;
+                        editCarro.ShowDialog();
+
+                        this.carrosTableAdapter.Update(editCarro.CarrosRow);
+
+                        /*
+                        this.carrosTableAdapter.UpdateQuery1(
+                            editCarro.CarrosRow.Modelo,
+                            editCarro.CarrosRow.Ano.ToString(),
+                            editCarro.CarrosRow.Marca,
+                            editCarro.CarrosRow.UsuAlt,
+                            DateTime.Now,
+                            editCarro.CarrosRow.Id);*/
+                    } break;
             }
             this.carrosTableAdapter.CustomQuery(this.querysInnerDataSet1.Carros);
         }
@@ -61,6 +78,23 @@ namespace DataGridViewExample {
             lixo.ShowDialog();
 
             this.carrosTableAdapter.CustomQuery(this.querysInnerDataSet1.Carros);
+        }
+
+        private void Button1_Click(object sender, EventArgs e) {
+            frmAdicionar formAdd = new frmAdicionar();
+            formAdd.ShowDialog();
+            
+            //Insert na tabela do banco de dados de carros o novo registro
+            this.carrosTableAdapter.Insert(
+                formAdd.CarrosRow.Modelo,
+                formAdd.CarrosRow.Ano,
+                formAdd.CarrosRow.Marca,
+                true,
+                1,
+                1,
+                DateTime.Now,
+                DateTime.Now
+                );
         }
     }
 }
