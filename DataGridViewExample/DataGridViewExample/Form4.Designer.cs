@@ -25,10 +25,6 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.vendasBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.querysInnerDataSet1 = new DataGridViewExample.QuerysInnerDataSet1();
-            this.button1 = new System.Windows.Forms.Button();
-            this.vendasTableAdapter = new DataGridViewExample.QuerysInnerDataSet1TableAdapters.VendasTableAdapter();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,6 +36,10 @@
             this.usuAltDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datIncDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datAltDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vendasBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.querysInnerDataSet1 = new DataGridViewExample.QuerysInnerDataSet1();
+            this.btAddVendas = new System.Windows.Forms.Button();
+            this.vendasTableAdapter = new DataGridViewExample.QuerysInnerDataSet1TableAdapters.VendasTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vendasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.querysInnerDataSet1)).BeginInit();
@@ -72,29 +72,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(772, 378);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
-            // 
-            // vendasBindingSource
-            // 
-            this.vendasBindingSource.DataMember = "Vendas";
-            this.vendasBindingSource.DataSource = this.querysInnerDataSet1;
-            // 
-            // querysInnerDataSet1
-            // 
-            this.querysInnerDataSet1.DataSetName = "QuerysInnerDataSet1";
-            this.querysInnerDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(12, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(771, 38);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Adicionar";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // vendasTableAdapter
-            // 
-            this.vendasTableAdapter.ClearBeforeFill = true;
             // 
             // Delete
             // 
@@ -197,12 +174,36 @@
             this.datAltDataGridViewTextBoxColumn.ReadOnly = true;
             this.datAltDataGridViewTextBoxColumn.Width = 125;
             // 
+            // vendasBindingSource
+            // 
+            this.vendasBindingSource.DataMember = "Vendas";
+            this.vendasBindingSource.DataSource = this.querysInnerDataSet1;
+            // 
+            // querysInnerDataSet1
+            // 
+            this.querysInnerDataSet1.DataSetName = "QuerysInnerDataSet1";
+            this.querysInnerDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // btAddVendas
+            // 
+            this.btAddVendas.Location = new System.Drawing.Point(12, 12);
+            this.btAddVendas.Name = "btAddVendas";
+            this.btAddVendas.Size = new System.Drawing.Size(771, 38);
+            this.btAddVendas.TabIndex = 1;
+            this.btAddVendas.Text = "Adicionar";
+            this.btAddVendas.UseVisualStyleBackColor = true;
+            this.btAddVendas.Click += new System.EventHandler(this.BtAddVendas_Click);
+            // 
+            // vendasTableAdapter
+            // 
+            this.vendasTableAdapter.ClearBeforeFill = true;
+            // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btAddVendas);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Form4";
             this.Text = "Form4";
@@ -217,7 +218,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btAddVendas;
         private QuerysInnerDataSet1 querysInnerDataSet1;
         private System.Windows.Forms.BindingSource vendasBindingSource;
         private QuerysInnerDataSet1TableAdapters.VendasTableAdapter vendasTableAdapter;

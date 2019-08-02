@@ -81,20 +81,27 @@ namespace DataGridViewExample {
         }
 
         private void Button1_Click(object sender, EventArgs e) {
+
+            //Abre o formulario de atualização
             frmAdicionar formAdd = new frmAdicionar();
             formAdd.ShowDialog();
-            
+
             //Insert na tabela do banco de dados de carros o novo registro
-            this.carrosTableAdapter.Insert(
-                formAdd.CarrosRow.Modelo,
-                formAdd.CarrosRow.Ano,
-                formAdd.CarrosRow.Marca,
-                true,
-                1,
-                1,
-                DateTime.Now,
-                DateTime.Now
-                );
+            if (!string.IsNullOrEmpty(formAdd.CarrosRow?.Modelo)) { // Para não dar erro quando o campo está vazia
+
+                this.carrosTableAdapter.Insert(
+                    formAdd.CarrosRow.Modelo,
+                    formAdd.CarrosRow.Ano,
+                    formAdd.CarrosRow.Marca,
+                    true,
+                    1,
+                    1,
+                    DateTime.Now,
+                    DateTime.Now
+                    );
+            }
+            //Atualiza a tabela
+            this.carrosTableAdapter.FillBy(this.querysInnerDataSet1.Carros);
         }
     }
 }

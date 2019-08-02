@@ -1,4 +1,5 @@
-﻿using DataGridViewExample.Edicao;
+﻿using DataGridViewExample.Adicao;
+using DataGridViewExample.Edicao;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,6 +40,23 @@ namespace DataGridViewExample {
                     } break;
             }
               this.marcasTableAdapter.CustomQuery(this.querysInnerDataSet1.Marcas);
+        }
+
+        private void BtAdicionar_Click(object sender, EventArgs e) {
+            frmAddMarca addMarca = new frmAddMarca();
+            addMarca.ShowDialog();
+            if (!string.IsNullOrEmpty(addMarca.MarcasRow?.Nome)) { // Para não dar erro quando o campo está vazia
+                this.marcasTableAdapter.Insert(
+                    addMarca.MarcasRow.Nome,
+                    true,
+                    1,
+                    1,
+                    DateTime.Now,
+                    DateTime.Now
+                    );
+            }
+            // Atualiza a tabela
+            this.marcasTableAdapter.Fill(this.querysInnerDataSet1.Marcas);
         }
     }
 }

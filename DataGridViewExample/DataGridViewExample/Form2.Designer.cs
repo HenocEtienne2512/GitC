@@ -25,10 +25,6 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.marcasBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.querysInnerDataSet1 = new DataGridViewExample.QuerysInnerDataSet1();
-            this.button1 = new System.Windows.Forms.Button();
-            this.marcasTableAdapter = new DataGridViewExample.QuerysInnerDataSet1TableAdapters.MarcasTableAdapter();
             this.DeleteCommand = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,6 +34,10 @@
             this.usuAltDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datIncDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datAltDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.marcasBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.querysInnerDataSet1 = new DataGridViewExample.QuerysInnerDataSet1();
+            this.marcasTableAdapter = new DataGridViewExample.QuerysInnerDataSet1TableAdapters.MarcasTableAdapter();
+            this.btAdicionar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.marcasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.querysInnerDataSet1)).BeginInit();
@@ -68,29 +68,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(784, 386);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
-            // 
-            // marcasBindingSource
-            // 
-            this.marcasBindingSource.DataMember = "Marcas";
-            this.marcasBindingSource.DataSource = this.querysInnerDataSet1;
-            // 
-            // querysInnerDataSet1
-            // 
-            this.querysInnerDataSet1.DataSetName = "QuerysInnerDataSet1";
-            this.querysInnerDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(14, 11);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(768, 33);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Adicionar";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // marcasTableAdapter
-            // 
-            this.marcasTableAdapter.ClearBeforeFill = true;
             // 
             // DeleteCommand
             // 
@@ -175,12 +152,36 @@
             this.datAltDataGridViewTextBoxColumn.ReadOnly = true;
             this.datAltDataGridViewTextBoxColumn.Width = 125;
             // 
+            // marcasBindingSource
+            // 
+            this.marcasBindingSource.DataMember = "Marcas";
+            this.marcasBindingSource.DataSource = this.querysInnerDataSet1;
+            // 
+            // querysInnerDataSet1
+            // 
+            this.querysInnerDataSet1.DataSetName = "QuerysInnerDataSet1";
+            this.querysInnerDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // marcasTableAdapter
+            // 
+            this.marcasTableAdapter.ClearBeforeFill = true;
+            // 
+            // btAdicionar
+            // 
+            this.btAdicionar.Location = new System.Drawing.Point(41, 11);
+            this.btAdicionar.Name = "btAdicionar";
+            this.btAdicionar.Size = new System.Drawing.Size(664, 36);
+            this.btAdicionar.TabIndex = 1;
+            this.btAdicionar.Text = "Adicionar";
+            this.btAdicionar.UseVisualStyleBackColor = true;
+            this.btAdicionar.Click += new System.EventHandler(this.BtAdicionar_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btAdicionar);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Form2";
             this.Text = "Form2";
@@ -195,7 +196,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btAdicao;
         private QuerysInnerDataSet1 querysInnerDataSet1;
         private System.Windows.Forms.BindingSource marcasBindingSource;
         private QuerysInnerDataSet1TableAdapters.MarcasTableAdapter marcasTableAdapter;
@@ -208,5 +209,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn usuAltDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn datIncDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn datAltDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btAdicionar;
     }
 }

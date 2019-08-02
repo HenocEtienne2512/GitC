@@ -46,6 +46,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adicao\frmAddMarca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Adicao\frmAddMarca.Designer.cs">
+      <DependentUpon>frmAddMarca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Adicao\frmAddUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Adicao\frmAddUsuario.Designer.cs">
+      <DependentUpon>frmAddUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Adicao\frmAddVendas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Adicao\frmAddVendas.Designer.cs">
+      <DependentUpon>frmAddVendas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Adicao\frmAdicionar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +125,9 @@
       <DependentUpon>Lixeira.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Carro.cs" />
+    <Compile Include="Model\Marca.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Model\Venda.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuerysInnerDataSet.cs">
@@ -125,6 +146,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QuerysInnerDataSet1.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Adicao\frmAddMarca.resx">
+      <DependentUpon>frmAddMarca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Adicao\frmAddUsuario.resx">
+      <DependentUpon>frmAddUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Adicao\frmAddVendas.resx">
+      <DependentUpon>frmAddVendas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Adicao\frmAdicionar.resx">
       <DependentUpon>frmAdicionar.cs</DependentUpon>
     </EmbeddedResource>
