@@ -29,19 +29,22 @@
             // btLogin
             // 
             this.btLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btLogin.Location = new System.Drawing.Point(89, 63);
+            this.btLogin.Location = new System.Drawing.Point(67, 51);
+            this.btLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btLogin.Name = "btLogin";
-            this.btLogin.Size = new System.Drawing.Size(283, 63);
+            this.btLogin.Size = new System.Drawing.Size(212, 51);
             this.btLogin.TabIndex = 0;
             this.btLogin.Text = "Login";
             this.btLogin.UseVisualStyleBackColor = true;
+            this.btLogin.Click += new System.EventHandler(this.BtLogin_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(488, 204);
+            this.ClientSize = new System.Drawing.Size(366, 166);
             this.Controls.Add(this.btLogin);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);

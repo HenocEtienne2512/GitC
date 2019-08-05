@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVCProject.View;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,11 @@ namespace MVCProject {
     public partial class Form1 : Form {
         public Form1() {
             InitializeComponent();
+        }
+
+        private void BtLogin_Click(object sender, EventArgs e) {
+            frmPrincipal formPrincipal = new frmPrincipal();
+            formPrincipal.ShowDialog();
         }
     }
 }
