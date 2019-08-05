@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVCProject.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,10 @@ namespace MVCProject.View {
     public partial class frmPrincipal : Form {
         public frmPrincipal() {
             InitializeComponent();
+            
+            if (Session.User == null) {
+                throw new Exception("Erro critico do sitema!");
+            }
         }
 
         private void UsuáriosToolStripMenuItem_Click(object sender, EventArgs e) {

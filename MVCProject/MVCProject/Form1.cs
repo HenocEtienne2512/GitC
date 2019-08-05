@@ -1,4 +1,5 @@
-﻿using MVCProject.View;
+﻿using MVCProject.Model;
+using MVCProject.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,8 +17,17 @@ namespace MVCProject {
         }
 
         private void BtLogin_Click(object sender, EventArgs e) {
-            frmPrincipal formPrincipal = new frmPrincipal();
-            formPrincipal.ShowDialog();
+            var Result = this.usuariosTableAdapter.LoginQuery(txtLogin.Text, txtSenha.Text);
+            if (Result != null) {
+                Session.User = new Usuario {
+                    Id = (int)Result
+                };
+                frmPrincipal formPrincipal = new frmPrincipal();
+                formPrincipal.ShowDialog();
+            } else {
+                throw new Exception("FUUUUUUUUUUUUUUUU");
+            }
+
         }
     }
 }
