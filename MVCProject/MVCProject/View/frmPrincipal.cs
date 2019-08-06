@@ -37,6 +37,7 @@ namespace MVCProject.View {
 
         private void LivrosToolStripMenuItem_Click(object sender, EventArgs e) {
             frmLivros formLivro = new frmLivros();
+            formLivro.ShowDialog();
         }
 
         private void LocaçõesToolStripMenuItem_Click(object sender, EventArgs e) {

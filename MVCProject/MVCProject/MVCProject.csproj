@@ -63,6 +63,9 @@
     <Compile Include="Model\Usuario.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SistemaBibliotecaDBDataSet.cs">
+      <DependentUpon>SistemaBibliotecaDBDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="SistemaBibliotecaDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -115,6 +118,12 @@
     </Compile>
     <Compile Include="View\frmGeneros.Designer.cs">
       <DependentUpon>frmGeneros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmLivroAutor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmLivroAutor.Designer.cs">
+      <DependentUpon>frmLivroAutor.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmPrincipal.cs">
       <SubType>Form</SubType>
@@ -176,6 +185,12 @@
     <Compile Include="View\Inserir\frmAddUsuarios.Designer.cs">
       <DependentUpon>frmAddUsuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Inserir\frmAddLivroAtutor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Inserir\frmAddLivroAtutor.Designer.cs">
+      <DependentUpon>frmAddLivroAtutor.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -212,6 +227,9 @@
     <EmbeddedResource Include="View\frmGeneros.resx">
       <DependentUpon>frmGeneros.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\frmLivroAutor.resx">
+      <DependentUpon>frmLivroAutor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -241,6 +259,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Inserir\frmAddUsuarios.resx">
       <DependentUpon>frmAddUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Inserir\frmAddLivroAtutor.resx">
+      <DependentUpon>frmAddLivroAtutor.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

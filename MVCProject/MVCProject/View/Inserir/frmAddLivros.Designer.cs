@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.btAdicionar = new System.Windows.Forms.Button();
             this.cbEditora = new System.Windows.Forms.ComboBox();
             this.cbGenero = new System.Windows.Forms.ComboBox();
@@ -38,21 +39,31 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtRegistro = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.sistemaBibliotecaDBDataSet = new MVCProject.SistemaBibliotecaDBDataSet();
+            this.generosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.generosTableAdapter = new MVCProject.SistemaBibliotecaDBDataSetTableAdapters.GenerosTableAdapter();
+            this.editorasBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.editorasTableAdapter = new MVCProject.SistemaBibliotecaDBDataSetTableAdapters.EditorasTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaBibliotecaDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.generosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.editorasBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btAdicionar
             // 
             this.btAdicionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btAdicionar.Location = new System.Drawing.Point(163, 410);
-            this.btAdicionar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btAdicionar.Margin = new System.Windows.Forms.Padding(4);
             this.btAdicionar.Name = "btAdicionar";
             this.btAdicionar.Size = new System.Drawing.Size(176, 38);
             this.btAdicionar.TabIndex = 4;
             this.btAdicionar.Text = "Inserir";
             this.btAdicionar.UseVisualStyleBackColor = true;
+            this.btAdicionar.Click += new System.EventHandler(this.BtAdicionar_Click);
             // 
             // cbEditora
             // 
+            this.cbEditora.DataSource = this.editorasBindingSource;
             this.cbEditora.DisplayMember = "Nome";
             this.cbEditora.FormattingEnabled = true;
             this.cbEditora.Location = new System.Drawing.Point(147, 235);
@@ -63,6 +74,7 @@
             // 
             // cbGenero
             // 
+            this.cbGenero.DataSource = this.generosBindingSource;
             this.cbGenero.DisplayMember = "Tipo";
             this.cbGenero.FormattingEnabled = true;
             this.cbGenero.Location = new System.Drawing.Point(147, 179);
@@ -169,6 +181,29 @@
             this.label1.TabIndex = 30;
             this.label1.Text = "Regitro : ";
             // 
+            // sistemaBibliotecaDBDataSet
+            // 
+            this.sistemaBibliotecaDBDataSet.DataSetName = "SistemaBibliotecaDBDataSet";
+            this.sistemaBibliotecaDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // generosBindingSource
+            // 
+            this.generosBindingSource.DataMember = "Generos";
+            this.generosBindingSource.DataSource = this.sistemaBibliotecaDBDataSet;
+            // 
+            // generosTableAdapter
+            // 
+            this.generosTableAdapter.ClearBeforeFill = true;
+            // 
+            // editorasBindingSource
+            // 
+            this.editorasBindingSource.DataMember = "Editoras";
+            this.editorasBindingSource.DataSource = this.sistemaBibliotecaDBDataSet;
+            // 
+            // editorasTableAdapter
+            // 
+            this.editorasTableAdapter.ClearBeforeFill = true;
+            // 
             // frmAddLivros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -189,9 +224,13 @@
             this.Controls.Add(this.txtRegistro);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btAdicionar);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmAddLivros";
             this.Text = "Inserir  Livros";
+            this.Load += new System.EventHandler(this.FrmAddLivros_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaBibliotecaDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.generosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.editorasBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -213,5 +252,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtRegistro;
         private System.Windows.Forms.Label label1;
+        private SistemaBibliotecaDBDataSet sistemaBibliotecaDBDataSet;
+        private System.Windows.Forms.BindingSource generosBindingSource;
+        private SistemaBibliotecaDBDataSetTableAdapters.GenerosTableAdapter generosTableAdapter;
+        private System.Windows.Forms.BindingSource editorasBindingSource;
+        private SistemaBibliotecaDBDataSetTableAdapters.EditorasTableAdapter editorasTableAdapter;
     }
 }

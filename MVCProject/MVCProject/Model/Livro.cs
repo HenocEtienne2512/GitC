@@ -14,6 +14,6 @@ namespace MVCProject.Model {
         public int Genero { get; set; }
         public int Editora { get; set; }
         public string Sinopse { get; set; }
-        public string Dbservacoes { get; set; }
+        public string Observacoes { get; set; }
     }
 }
