@@ -34,7 +34,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <TextBox Name="txtLogin" Margin="36,39.6,29.2,40.2" Grid.Row="2" TextWrapping="Wrap" Text="" Grid.Column="2" RenderTransformOrigin="0.487,0.509"/>
+        <TextBox x:Name="txtLogin" Margin="36,39.6,29.2,40.2" Grid.Row="2" TextWrapping="Wrap" Text="" Grid.Column="2" RenderTransformOrigin="0.487,0.509"/>
         <TextBox x:Name="txtSenha" Margin="36,47,29.2,28.4" Grid.Row="1" TextWrapping="Wrap" Text="" Grid.Column="2"/>
 
     </Grid>
