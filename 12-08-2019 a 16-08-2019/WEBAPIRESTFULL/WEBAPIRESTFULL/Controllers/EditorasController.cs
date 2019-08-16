@@ -7,52 +7,51 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using WEBAPIRESTFULL.Models;
-using System.Web.Http.Cors;
 
-    
 namespace WEBAPIRESTFULL.Controllers
 {
-    [EnableCors(origins:"*",headers:"*",methods:"*")]
-    public class UsuariosController : ApiController
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class EditorasController : ApiController
     {
-        private readonly BibliotecaContextDB db = new BibliotecaContextDB();
+        private BibliotecaContextDB db = new BibliotecaContextDB();
 
-        // GET: api/Usuarios
-        public IQueryable<Usuarios> GetUsuarios()
+        // GET: api/Editoras
+        public IQueryable<Editoras> GetEditoras()
         {
-            return db.Usuarios.Where(x => x.Ativo == true);
+            return db.Editoras;
         }
 
-        // GET: api/Usuarios/5
-        [ResponseType(typeof(Usuarios))]
-        public IHttpActionResult GetUsuarios(int id)
+        // GET: api/Editoras/5
+        [ResponseType(typeof(Editoras))]
+        public IHttpActionResult GetEditoras(int id)
         {
-            Usuarios usuarios = db.Usuarios.Find(id);
-            if (usuarios == null)
+            Editoras editoras = db.Editoras.Find(id);
+            if (editoras == null)
             {
                 return NotFound();
             }
 
-            return Ok(usuarios);
+            return Ok(editoras);
         }
 
-        // PUT: api/Usuarios/5
+        // PUT: api/Editoras/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutUsuarios(int id, Usuarios usuarios)
+        public IHttpActionResult PutEditoras(int id, Editoras editoras)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != usuarios.Id)
+            if (id != editoras.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(usuarios).State = EntityState.Modified;
+            db.Entry(editoras).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +59,7 @@ namespace WEBAPIRESTFULL.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UsuariosExists(id))
+                if (!EditorasExists(id))
                 {
                     return NotFound();
                 }
@@ -73,38 +72,37 @@ namespace WEBAPIRESTFULL.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Usuarios
-        //[ResponseType(typeof(Usuarios))]
-        public IHttpActionResult PostUsuarios(Usuarios usuarios)
+        // POST: api/Editoras
+        [ResponseType(typeof(Editoras))]
+        public IHttpActionResult PostEditoras(Editoras editoras)
         {
             if (!ModelState.IsValid)
             {
-                if (ModelState.Keys.First().ToString() != "usuarios.Id") {
+                if (ModelState.Keys.First().ToString() != "editoras.Id") {
                     return BadRequest(ModelState);
                 }
             }
 
-            db.Usuarios.Add(usuarios);
+            db.Editoras.Add(editoras);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = usuarios.Id }, usuarios);
+            return CreatedAtRoute("DefaultApi", new { id = editoras.Id }, editoras);
         }
 
-        // DELETE: api/Usuarios/5
-        [ResponseType(typeof(Usuarios))]
-        public IHttpActionResult DeleteUsuarios(int id)
+        // DELETE: api/Editoras/5
+        [ResponseType(typeof(Editoras))]
+        public IHttpActionResult DeleteEditoras(int id)
         {
-            Usuarios usuarios = db.Usuarios.Find(id);
-            if (usuarios == null)
+            Editoras editoras = db.Editoras.Find(id);
+            if (editoras == null)
             {
                 return NotFound();
             }
 
-            usuarios.Ativo = false;
-
+            db.Editoras.Remove(editoras);
             db.SaveChanges();
 
-            return Ok(usuarios);
+            return Ok(editoras);
         }
 
         protected override void Dispose(bool disposing)
@@ -116,9 +114,9 @@ namespace WEBAPIRESTFULL.Controllers
             base.Dispose(disposing);
         }
 
-        private bool UsuariosExists(int id)
+        private bool EditorasExists(int id)
         {
-            return db.Usuarios.Count(e => e.Id == id) > 0;
+            return db.Editoras.Count(e => e.Id == id) > 0;
         }
     }
 }
