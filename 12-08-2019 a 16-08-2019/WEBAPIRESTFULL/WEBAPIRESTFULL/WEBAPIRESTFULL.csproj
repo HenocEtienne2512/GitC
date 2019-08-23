@@ -172,6 +172,9 @@
     <Compile Include="Controllers\EditorasController.cs" />
     <Compile Include="Controllers\GenerosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LivrosController.cs" />
+    <Compile Include="Controllers\LocacoesController.cs" />
+    <Compile Include="Controllers\MathFile.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -184,6 +187,10 @@
     <Compile Include="Migrations\201908201910244_Second.Designer.cs">
       <DependentUpon>201908201910244_Second.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908221400238_heranca.cs" />
+    <Compile Include="Migrations\201908221400238_heranca.Designer.cs">
+      <DependentUpon>201908221400238_heranca.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Autores.cs" />
     <Compile Include="Models\BibliotecaContextDB.cs" />
@@ -194,6 +201,7 @@
     <Compile Include="Models\UserControls.cs" />
     <Compile Include="Models\Usuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\Single.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -284,6 +292,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908201910244_Second.resx">
       <DependentUpon>201908201910244_Second.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908221400238_heranca.resx">
+      <DependentUpon>201908221400238_heranca.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -7,52 +7,51 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using WEBAPIRESTFULL.Models;
-using System.Web.Http.Cors;
 
-    
 namespace WEBAPIRESTFULL.Controllers
 {
-    [EnableCors(origins:"*",headers:"*",methods:"*")]
-    public class UsuariosController : ApiController
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class LocacoesController : ApiController
     {
-        private readonly BibliotecaContextDB db = new BibliotecaContextDB();
+        private BibliotecaContextDB db = new BibliotecaContextDB();
 
-        // GET: api/Usuarios
-        public IQueryable<Usuarios> GetUsuarios()
+        // GET: api/Locacaos
+        public IQueryable<Locacao> GetLocacao()
         {
-
-            return db.Usuarios.Where(x => x.Ativo == true);
+            return db.Locacao;
         }
 
-        // GET: api/Usuarios/5
-        [ResponseType(typeof(Usuarios))]
-        public IHttpActionResult GetUsuarios(int id)
+        // GET: api/Locacaos/5
+        [ResponseType(typeof(Locacao))]
+        public IHttpActionResult GetLocacao(int id)
         {
-            Usuarios usuarios = db.Usuarios.Find(id);
-            if (usuarios == null)
+            Locacao locacao = db.Locacao.Find(id);
+            if (locacao == null)
             {
                 return NotFound();
             }
-            return Ok(usuarios);
+
+            return Ok(locacao);
         }
 
-        // PUT: api/Usuarios/5
+        // PUT: api/Locacaos/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutUsuarios(int id, Usuarios usuarios)
+        public IHttpActionResult PutLocacao(int id, Locacao locacao)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != usuarios.Id)
+            if (id != locacao.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(usuarios).State = EntityState.Modified;
+            db.Entry(locacao).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +59,7 @@ namespace WEBAPIRESTFULL.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UsuariosExists(id))
+                if (!LocacaoExists(id))
                 {
                     return NotFound();
                 }
@@ -73,38 +72,37 @@ namespace WEBAPIRESTFULL.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Usuarios
-        //[ResponseType(typeof(Usuarios))]
-        public IHttpActionResult PostUsuarios(Usuarios usuarios)
+        // POST: api/Locacaos
+        [ResponseType(typeof(Locacao))]
+        public IHttpActionResult PostLocacao(Locacao locacao)
         {
             if (!ModelState.IsValid)
             {
-                if (ModelState.Keys.First().ToString() != "usuarios.Id") {
+                if (ModelState.Keys.First().ToString() != "locacao.Id") {
                     return BadRequest(ModelState);
                 }
             }
 
-            db.Usuarios.Add(usuarios);
+            db.Locacao.Add(locacao);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = usuarios.Id }, usuarios);
+            return CreatedAtRoute("DefaultApi", new { id = locacao.Id }, locacao);
         }
 
-        // DELETE: api/Usuarios/5
-        [ResponseType(typeof(Usuarios))]
-        public IHttpActionResult DeleteUsuarios(int id)
+        // DELETE: api/Locacaos/5
+        [ResponseType(typeof(Locacao))]
+        public IHttpActionResult DeleteLocacao(int id)
         {
-            Usuarios usuarios = db.Usuarios.Find(id);
-            if (usuarios == null)
+            Locacao locacao = db.Locacao.Find(id);
+            if (locacao == null)
             {
                 return NotFound();
             }
 
-            usuarios.Ativo = false;
-
+            db.Locacao.Remove(locacao);
             db.SaveChanges();
 
-            return Ok(usuarios);
+            return Ok(locacao);
         }
 
         protected override void Dispose(bool disposing)
@@ -116,9 +114,9 @@ namespace WEBAPIRESTFULL.Controllers
             base.Dispose(disposing);
         }
 
-        private bool UsuariosExists(int id)
+        private bool LocacaoExists(int id)
         {
-            return db.Usuarios.Count(e => e.Id == id) > 0;
+            return db.Locacao.Count(e => e.Id == id) > 0;
         }
     }
 }

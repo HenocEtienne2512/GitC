@@ -1,22 +1,10 @@
 /* Ao carregar o documento o mesmo inicia o conteudo desde script*/
 jQuery(document).ready(function(){
-
-	jQuery('#btnCancelar').click(function(){
-
-		$('#Id').val("");
-		$('#Nome').val("");
-		$('#Login').val("");
-		$('#Email').val("");
-		$('#Senha').val("");
-		$('#Ativo select').val("true");
-	});
-
 	GetMethod(null);
 });
 
 function GetMethod(object){
 		var settings = {
-			"async": true,
 			"crossDomain": true,
 			"url": "http://localhost:59271/Api/Usuarios",
 			"method": "GET",
