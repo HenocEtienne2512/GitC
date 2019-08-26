@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[Editoras]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1,1), 
+    [Nome] VARCHAR(200) NOT NULL, 
+    [Decricao] VARCHAR(1000) NULL
+)

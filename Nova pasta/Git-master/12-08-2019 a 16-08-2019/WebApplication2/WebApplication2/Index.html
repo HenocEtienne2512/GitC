@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="Content/bootstrap-grid.css" rel="stylesheet" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <style>
+        .row {
+            background-color: burlywood;
+        }
+
+        .row2{
+            text-align: right;
+        }
+
+        #label {
+        }
+    </style>
+</head>
+<body>
+    <!-- https://httpbin.org/get -->
+    <div class="row">
+        <div class="container">
+            <!-- Aqui vem os botões -->
+            <div class="row">
+                <div class="col-md"></div>
+                <div class="col-md">
+                    <input id="Button1" class="col-md-12" type="button" value="Pesquisar" />
+                </div>
+                <div class="col-md"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-md"></div>
+                <div class="col-md">
+                    <input id="Button1" class="col-md-12" type="button" value="Apagar" />
+                </div>
+                <div class="col-md"></div>
+            </div>
+
+            <!-- Aqui vem os inputs -->
+            <div class="row">
+                <div class="col-md"></div>
+                <div class="col-md row2">
+                    <label id="label" for="Accept">Accept</label>
+
+                </div>
+                <div class="col-md">
+                    <input type="text" id="Accept" placeholder="text content" />
+                </div>
+                <div class="col-md"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-md"></div>
+                <div class="col-md row2">
+                    <label id="label" for="Accept">Accept</label>
+
+                </div>
+                <div class="col-md">
+                    <input type="text" id="Accept" placeholder="text content" />
+                </div>
+                <div class="col-md"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="Scripts/bootstrap.bundle.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/jquery-3.4.1.js"></script>
+    <script>
+        $('#blockbackgroud').hide();
+        $(function () {
+            $('#Button1').click(function () {
+                $('#blockbackgroud').show(500);
+
+                $.get('https://httpbin.org/get', function (data, textStatus, jqXHR) {
+                    $('#blockbackgroud').hide();
+
+                    $('#Accept').val(data.header.Accept);
+                    $('#AcceptEncoding').val(data.header['Accept-Encoding']);
+                });
+            });
+        });
+
+    </script>
+</body>
+</html>
