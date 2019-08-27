@@ -189,6 +189,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
@@ -232,6 +233,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MarcasController.cs" />
     <Compile Include="Controllers\ModelosController.cs" />
+    <Compile Include="Controllers\PeriodosController.cs" />
+    <Compile Include="Controllers\TermoUsosController.cs" />
     <Compile Include="Controllers\TipoVeiculosController.cs" />
     <Compile Include="Controllers\VeiculosController.cs" />
     <Compile Include="Enums\ValidFields.cs" />
@@ -241,6 +244,14 @@
     <Compile Include="Migrations\201908271648115_Create.cs" />
     <Compile Include="Migrations\201908271648115_Create.Designer.cs">
       <DependentUpon>201908271648115_Create.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908271947575_create01.cs" />
+    <Compile Include="Migrations\201908271947575_create01.Designer.cs">
+      <DependentUpon>201908271947575_create01.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908272006205_create02.cs" />
+    <Compile Include="Migrations\201908272006205_create02.Designer.cs">
+      <DependentUpon>201908272006205_create02.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Colaborador.cs" />
@@ -346,6 +357,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201908271648115_Create.resx">
       <DependentUpon>201908271648115_Create.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908271947575_create01.resx">
+      <DependentUpon>201908271947575_create01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908272006205_create02.resx">
+      <DependentUpon>201908272006205_create02.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

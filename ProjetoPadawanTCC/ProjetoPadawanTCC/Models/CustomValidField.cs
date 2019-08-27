@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 
 namespace ProjetoPadawanTCC.Models {
-    public class CustomValidField {
+    public class CustomValidField: ValidationAttribute {
         ContextDB dB = new ContextDB();
 
         private ValidFields typeField;
@@ -16,20 +16,23 @@ namespace ProjetoPadawanTCC.Models {
             typeField = type;
         }
 
-        protected override ValidationResult IsValid(object value, ValidationContext validationContext) {
+        protected override ValidationResult IsValid(object value,
+             ValidationContext validationContext) {
             if (value != null) {
                 switch (typeField) {
-                    case ValidFields.ValidaPlaca: { } break;
-                    case ValidFields.ValidaEmail: { return ValidarEmail(value, validationContext.DisplayName); }
+                    case ValidFields.ValidaEmail: {
+                            return ValidaEmail(value, validationContext.DisplayName);
+                        }
+                    case ValidFields.ValidaPlaca: {
+                            return ValidaPlaca(value, validationContext.DisplayName);
+                        }
                     default: { } break;
                 }
-
             }
-
-            return new ValidationResult($"O campo {validationContext.DisplayName} é obrigatório.");
+            return new ValidationResult($"O campo {validationContext.DisplayName} é obligatório.");
         }
 
-        private ValidationResult ValidarEmail(object value, string displayField) {
+        private ValidationResult ValidaEmail(object value, string displayField) {
             bool result = Regex.IsMatch(value.ToString(), @"^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$");
 
             if (result)

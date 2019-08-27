@@ -28,5 +28,9 @@ namespace ProjetoPadawanTCC.Models
         public System.Data.Entity.DbSet<ProjetoPadawanTCC.Models.Cores> Cores { get; set; }
 
         public System.Data.Entity.DbSet<ProjetoPadawanTCC.Models.Veiculos> Veiculos { get; set; }
+
+        public System.Data.Entity.DbSet<ProjetoPadawanTCC.Models.TermoUso> TermoUsoes { get; set; }
+
+        public System.Data.Entity.DbSet<ProjetoPadawanTCC.Models.Periodos> Periodos { get; set; }
     }
 }
