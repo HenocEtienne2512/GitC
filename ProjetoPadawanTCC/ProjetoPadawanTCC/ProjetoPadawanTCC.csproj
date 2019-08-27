@@ -237,11 +237,13 @@
     <Compile Include="Models\Locacoes.cs" />
     <Compile Include="Models\Marcas.cs" />
     <Compile Include="Models\Modelos.cs" />
-    <Compile Include="Models\Periodo.cs" />
+    <Compile Include="Models\Periodos.cs" />
+    <Compile Include="Models\TermoUso.cs" />
     <Compile Include="Models\UserControls.cs" />
     <Compile Include="Models\UsuarioGestor.cs" />
     <Compile Include="Models\UsuariosLocador.cs" />
     <Compile Include="Models\TipoVeiculos.cs" />
+    <Compile Include="Models\VagasGaragem.cs" />
     <Compile Include="Models\Veiculos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
