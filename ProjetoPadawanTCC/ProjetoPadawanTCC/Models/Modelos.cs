@@ -8,15 +8,10 @@ using System.Web;
 namespace ProjetoPadawanTCC.Models {
     public class Modelos: UserControls {
         [Key]
-        public int Id { get; set; }
-        public string Modelo { get; set; }
+        public int CodigoModelo { get; set; }
+        public string Descricao { get; set; }
+        public virtual Marcas CodigoMarca { get; set; }
 
-        [ForeignKey("Marca")]
-        public Marcas marcas { get; set; }
-        public int Marca { get; set; }
-
-        [ForeignKey("Veiculo")]
-        public TipoVeiculos veiculos { get; set; }
-        public int Veiculo { get; set; }
+        public virtual TipoVeiculos CodigoTipo { get; set; }
     }
 }

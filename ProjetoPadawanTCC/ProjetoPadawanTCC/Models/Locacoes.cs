@@ -8,34 +8,20 @@ using System.Web;
 namespace ProjetoPadawanTCC.Models {
     public class Locacoes: UserControls {
         [Key]
-        public int Id { get; set; }
+        public int CodigoLocacao { get; set; }
 
-        [ForeignKey("Veiculo")]
-        public TipoVeiculos veiculo { get; set; }
-        public int Veiculo { get; set; }
+        public virtual TipoVeiculos CodigoTipo { get; set; }
 
-        [ForeignKey("Marca")]
-        public Marcas marcas { get; set; }
-        public int Marca { get; set; }
+        public virtual Marcas CodigoMarca { get; set; }
 
-        [ForeignKey("Modelo")]
-        public Modelos modelos { get; set; }
-        public int Modelo { get; set; }
+        public virtual Modelos CodigoModelo { get; set; }
 
-        [ForeignKey("Cor")]
-        public Cores cores { get; set; }
-        public int Cor { get; set; }
+        public virtual Cores CodigoCor { get; set; }
 
-        [ForeignKey("Placa")]
-        public Veiculos veiculos { get; set; }
-        public int Placa { get; set; }
+        public virtual Veiculos veiculos { get; set; }
 
-        [ForeignKey("CodPeriodo")]
-        public Periodos periodos { get; set; }
-        public int CodPeriodo { get; set; }
+        public virtual Periodos CodigoPeriodo { get; set; }
 
-        [ForeignKey("UsuarioLoc")]
-        public UsuariosLocador usuario { get; set; }
-        public int UsuarioLoc { get; set; }
+        public virtual Usuarios CodUsu { get; set; }
     }
 }

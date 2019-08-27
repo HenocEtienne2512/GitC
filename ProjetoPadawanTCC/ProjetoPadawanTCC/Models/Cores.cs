@@ -7,7 +7,7 @@ using System.Web;
 namespace ProjetoPadawanTCC.Models {
     public class Cores: UserControls {
         [Key]
-        public int Id { get; set; }
+        public int CodigoCor { get; set; }
         public string Descricao { get; set; }
     }
 }

@@ -5,9 +5,11 @@ using System.Linq;
 using System.Web;
 
 namespace ProjetoPadawanTCC.Models {
-    public class TipoVeiculos: UserControls {
+    public class Usuarios {
         [Key]
-        public int CodigoTipo { get; set; }
-        public string Descricao { get; set; }
+        public int CodUsu { get; set; }
+        public string Tipo { get; set; }
+        
+
     }
 }

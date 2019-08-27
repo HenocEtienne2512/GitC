@@ -9,26 +9,16 @@ namespace ProjetoPadawanTCC.Models {
     public class Veiculos {
         [Key]
         public int Id { get; set; }
+     
+        public virtual Usuarios CodUsu { get; set; }
 
-        [ForeignKey("UsuarioLoc")]
-        public UsuariosLocador usuario { get; set; }
-        public int UsuarioLoc { get; set; }
+        public virtual TipoVeiculos codigoTipo { get; set; }     
 
-        [ForeignKey("Tipo")]
-        public TipoVeiculos tipoVeiculos { get; set; }
-        public int Tipo { get; set; }
+        public virtual Marcas CodigoMarca { get; set; }
 
-        [ForeignKey("Marca")]
-        public Marcas marcas { get; set; }
-        public int Marca { get; set; }
+        public virtual Modelos CodigoModelo { get; set; }
 
-        [ForeignKey("Modelo")]
-        public Modelos modelos { get; set; }
-        public int Modelo { get; set; }
-
-        [ForeignKey("Cor")]
-        public Cores cores { get; set; }
-        public int Cor { get; set; }
+        public virtual Cores CodigoCor { get; set; }
 
         public string Placa { get; set; }
     }
