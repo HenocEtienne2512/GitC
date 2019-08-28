@@ -13,6 +13,18 @@ namespace ProjetoPadawanTCC.Migrations {
         }
 
         protected override void Seed(ProjetoPadawanTCC.Models.ProjetoPadawanTCCContext context) {
+            //  This method will be called after migrating to the latest version.
+
+            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
+            //  to avoid creating duplicate seed data. E.g.
+            //
+            //    context.People.AddOrUpdate(
+            //      p => p.FullName,
+            //      new Person { FullName = "Andrew Peters" },
+            //      new Person { FullName = "Brice Lambson" },
+            //      new Person { FullName = "Rowan Miller" }
+            //    );
+            //
             var TipoVeiculos = new List<TipoVeiculos>() {
                 new TipoVeiculos(){CodigoTipo = 0,Descricao = "Automóvel"},
                 new TipoVeiculos(){CodigoTipo = 1,Descricao = "Moto"},
@@ -958,19 +970,23 @@ namespace ProjetoPadawanTCC.Migrations {
             Modelos.ForEach(s => context.Modelos.AddOrUpdate(p => p.Descricao, s));
             context.SaveChanges();
 
+            var Cores = new List<Cores>() {
+                new Cores(){CodigoCor = 0,Descricao = "Branco"},
+                new Cores(){CodigoCor = 1,Descricao = "Preto"},
+                new Cores(){CodigoCor = 2,Descricao = "Prata"},
+                new Cores(){CodigoCor = 3,Descricao = "Cinza"},
+                new Cores(){CodigoCor = 4,Descricao = "Vermelho"},
+                new Cores(){CodigoCor = 5,Descricao = "Marron/Bege"},
+                new Cores(){CodigoCor = 6,Descricao = "Azul"},
+                new Cores(){CodigoCor = 7,Descricao = "Verde"},
+                new Cores(){CodigoCor = 8,Descricao = "Amarelo/Dourado"},
+                new Cores(){CodigoCor = 9,Descricao = "Outros"},
+                };
 
-            //  This method will be called after migrating to the latest version.
+            Cores.ForEach(s => context.Cores.AddOrUpdate(p => p.Descricao, s));
+            context.SaveChanges();
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
         }
+
     }
 }

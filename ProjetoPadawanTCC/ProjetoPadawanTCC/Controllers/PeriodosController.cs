@@ -20,6 +20,7 @@ namespace ProjetoPadawanTCC.Controllers
         // GET: api/Periodos
         public IQueryable<Periodos> GetPeriodos()
         {
+            
             return db.Periodos;
         }
 

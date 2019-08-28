@@ -15,5 +15,6 @@ namespace ProjetoPadawanTCC.Models {
         public DbSet<Periodos> periodos { get; set; }
         public DbSet<VagasGaragem> vagasGaragem { get; set; }
         public DbSet<Locacoes> locacoes { get; set; }
+        public DbSet<Colaborador> colaborador { get; set; }
     }
 }

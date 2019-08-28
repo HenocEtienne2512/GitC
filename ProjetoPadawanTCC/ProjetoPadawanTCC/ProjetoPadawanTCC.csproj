@@ -253,6 +253,14 @@
     <Compile Include="Migrations\201908272006205_create02.Designer.cs">
       <DependentUpon>201908272006205_create02.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908281317514_create03.cs" />
+    <Compile Include="Migrations\201908281317514_create03.Designer.cs">
+      <DependentUpon>201908281317514_create03.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908281654297_create04.cs" />
+    <Compile Include="Migrations\201908281654297_create04.Designer.cs">
+      <DependentUpon>201908281654297_create04.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Colaborador.cs" />
     <Compile Include="Models\ContextDB.cs" />
@@ -363,6 +371,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908272006205_create02.resx">
       <DependentUpon>201908272006205_create02.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908281317514_create03.resx">
+      <DependentUpon>201908281317514_create03.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908281654297_create04.resx">
+      <DependentUpon>201908281654297_create04.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

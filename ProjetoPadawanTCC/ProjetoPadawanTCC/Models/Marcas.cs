@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -10,7 +11,7 @@ namespace ProjetoPadawanTCC.Models {
         [Key]
         public int CodigoMarca { get; set; }
         public string Descricao { get; set; }
-
+        [JsonIgnore]
         public virtual TipoVeiculos CodigoTipo { get; set; }
     }
 }
